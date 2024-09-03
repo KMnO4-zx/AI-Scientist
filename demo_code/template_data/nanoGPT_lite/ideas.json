@@ -1,0 +1,200 @@
+[
+    {
+        "Name": "adaptive_block_size",
+        "Title": "Adaptive Block Size: Dynamic Context Window Adjustment for Efficient Training",
+        "Experiment": "Modify the model to dynamically adjust its block size during training, starting with a smaller block size and gradually increasing it. This could potentially lead to faster initial training and better long-range dependency learning.",
+        "Interestingness": 6,
+        "Feasibility": 4,
+        "Novelty": 4,
+        "novel": true
+    },
+    {
+        "Name": "layerwise_learning_rates",
+        "Title": "Layer-wise Learning Rate Adaptation: Optimizing Training Dynamics in Transformer Models",
+        "Experiment": "Implement layer-wise learning rates, where each transformer layer has its own learning rate. Modify the configure_optimizers function to assign different learning rates to different layers, with deeper layers having lower learning rates. Compare the training dynamics, convergence speed, and final performance with the baseline model.",
+        "Interestingness": 4,
+        "Feasibility": 6,
+        "Novelty": 2,
+        "novel": true
+    },
+    {
+        "Name": "parameter_sharing",
+        "Title": "Exploring Parameter Sharing in Character-Level Transformer Models",
+        "Experiment": "Modify the Block class to optionally share parameters between some of the transformer blocks. Introduce a new configuration parameter to control the sharing size. Adjust the training loop to monitor convergence speed and final performance with shared vs non-shared configurations. Compare model performance, parameter size, and training time.",
+        "Interestingness": 7,
+        "Feasibility": 7,
+        "Novelty": 5,
+        "novel": true
+    },
+    {
+        "Name": "knowledge_distillation",
+        "Title": "Knowledge Distillation for Enhancing Character-Level Language Models",
+        "Experiment": "Implement a knowledge distillation framework where a small language model (student) learns from a larger pre-trained model (teacher). Use an existing language model and adapt it to provide character-level outputs if necessary. Modify the training loop to incorporate a distillation loss, which involves minimizing the difference between the student's outputs and the teacher's soft labels. Compare the student model's performance with and without distillation in terms of accuracy, generalization, and inference speed.",
+        "Interestingness": 8,
+        "Feasibility": 6,
+        "Novelty": 6,
+        "novel": true
+    },
+    {
+        "Name": "curriculum_learning",
+        "Title": "Curriculum Learning: Progressive Complexity in Character-Level Model Training",
+        "Experiment": "Implement a curriculum learning strategy where the training data is organized by increasing complexity. Modify the data loader to start training on simpler sequences (e.g., shorter sequences or sequences with common words) and gradually introduce more complex sequences as training progresses. Track and compare the convergence speed, final performance, and robustness of the model trained with and without curriculum learning.",
+        "Interestingness": 7,
+        "Feasibility": 5,
+        "Novelty": 6,
+        "novel": true
+    },
+    {
+        "Name": "attention_sparsity",
+        "Title": "Exploring Attention Sparsity in Character-Level Transformer Models",
+        "Experiment": "Modify the CausalSelfAttention class to implement sparse attention mechanisms. Introduce a new configuration parameter to control the sparsity level. Begin by experimenting with predefined sparsity patterns such as block sparsity or strided sparsity. Quantitatively evaluate the impact on computational efficiency using GPU memory usage and inference speed, as well as on model performance using metrics like training loss and accuracy. Compare these metrics against a baseline model with dense attention. If successful, explore learnable sparsity patterns as a subsequent phase.",
+        "Interestingness": 8,
+        "Feasibility": 6,
+        "Novelty": 7,
+        "novel": true
+    },
+    {
+        "Name": "adaptive_computation_time",
+        "Title": "Adaptive Computation Time in Character-Level Language Models",
+        "Experiment": "Integrate a simplified adaptive computation time mechanism by adding a halting unit to a few selected transformer blocks. The halting unit will decide whether further computation is needed based on the input. Adjust the training loop to include a regularization term for minimizing computation steps. Evaluate the impact on model efficiency by measuring computation time and energy consumption and ensure performance by tracking accuracy against a baseline model. Allow tuning of the regularization term to balance efficiency and accuracy.",
+        "Interestingness": 8,
+        "Feasibility": 6,
+        "Novelty": 7,
+        "novel": true
+    },
+    {
+        "Name": "weight_noise_injection",
+        "Title": "Improving Robustness and Generalization with Weight Noise Injection",
+        "Experiment": "Modify the training loop to introduce random Gaussian noise to the model's weights after each optimization step. Implement a configuration parameter to control the noise level. Evaluate the model's performance on the validation data with and without noise injection to determine its impact on generalization. Additionally, test the model's robustness by introducing small perturbations to the input data during validation and measuring performance changes.",
+        "Interestingness": 7,
+        "Feasibility": 8,
+        "Novelty": 5,
+        "novel": false
+    },
+    {
+        "Name": "mixed_precision_training",
+        "Title": "Enhancing Training Efficiency with Mixed Precision in Character-Level Language Models",
+        "Experiment": "Implement mixed precision training using PyTorch's automatic mixed precision (AMP). Modify the training loop to enable mixed precision and compare the training time, memory usage, and model performance against the baseline full precision training. Evaluate the impact on both training and inference speed and ensure model accuracy remains consistent.",
+        "Interestingness": 8,
+        "Feasibility": 8,
+        "Novelty": 5,
+        "novel": true
+    },
+    {
+        "Name": "dynamic_tokenization",
+        "Title": "Dynamic Tokenization Strategies for Character-Level Language Models",
+        "Experiment": "Modify the data loader to implement dynamic tokenization strategies, starting with character-level granularity and shifting to subword-level or word-level granularity as training progresses. Implement a mechanism to control the transition based on training phase or performance metrics. Evaluate the impact on model performance, efficiency, and convergence speed compared to a static character-level tokenization approach.",
+        "Interestingness": 9,
+        "Feasibility": 7,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "early_exit_strategy",
+        "Title": "Early Exit Strategy: Efficient Inference in Character-Level Transformer Models",
+        "Experiment": "Incorporate an early exit mechanism in the GPT model by adding a confidence score assessment within each Block. Modify the forward method to include a confidence check after each block, using a simple metric such as the maximum softmax probability to decide on early exit. Compare inference speed and accuracy with and without early exit to evaluate computational efficiency and model performance trade-offs.",
+        "Interestingness": 9,
+        "Feasibility": 6,
+        "Novelty": 7,
+        "novel": true
+    },
+    {
+        "Name": "adaptive_architecture_search",
+        "Title": "Adaptive Architecture Search for Character-Level Language Models",
+        "Experiment": "Integrate an adaptive mechanism in the training loop to periodically evaluate model performance and adjust specific architectural components, such as the number of layers or embedding size. Trigger adjustments based on predefined criteria like validation loss plateau or epoch milestones. Compare the performance, training time, and complexity of the final adaptive architecture against a static baseline.",
+        "Interestingness": 9,
+        "Feasibility": 6,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "memory_augmented_networks",
+        "Title": "Enhancing Character-Level Language Models with Memory-Augmented Neural Networks",
+        "Experiment": "Integrate a parameterizable memory buffer into the GPT model architecture. Modify the GPT class to include this memory component, which stores a fixed number of past hidden states. Allow the buffer size to be tuned according to sequence length or compute resources. Design read operations to allow the model to access this buffer during the forward pass. Adjust the training loop to update the buffer's contents at each step. Evaluate the model's performance on the validation set, focusing on tasks with long-range dependencies. Compare the performance, memory efficiency, and computational overhead with the baseline model.",
+        "Interestingness": 9,
+        "Feasibility": 6,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "adaptive_dropout",
+        "Title": "Adaptive Dropout: Dynamic Regularization in Character-Level Transformer Models",
+        "Experiment": "Implement an adaptive dropout mechanism where the dropout rate is adjusted dynamically during training. Modify the training loop to track validation loss or other performance metrics, and adjust the dropout rate accordingly. For example, increase the dropout rate if validation loss decreases, suggesting potential overfitting. Compare the convergence speed, final validation performance, and robustness of the model with and without adaptive dropout.",
+        "Interestingness": 8,
+        "Feasibility": 7,
+        "Novelty": 6,
+        "novel": true
+    },
+    {
+        "Name": "attention_temperature",
+        "Title": "Exploring Attention Temperature in Transformer Models",
+        "Experiment": "Modify the CausalSelfAttention class to incorporate an attention temperature parameter. Adjust the calculation of attention scores by dividing them by the temperature. Experiment with both fixed and dynamically adjusted temperatures based on validation performance. Compare the convergence speed, final performance, and robustness of the model with different temperature settings against the baseline model.",
+        "Interestingness": 8,
+        "Feasibility": 7,
+        "Novelty": 7,
+        "novel": false
+    },
+    {
+        "Name": "model_pruning",
+        "Title": "Efficient Model Pruning in Character-Level Transformer Models",
+        "Experiment": "Implement structured pruning within the training loop by identifying and removing less important components such as heads in multi-head attention or neurons in MLP layers. Use metrics like weight magnitude or gradient-based importance to decide which components to prune. Modify the training loop to apply pruning at specific intervals, such as every few epochs. Evaluate the impact of pruning on model size, training time, and performance metrics, including validation loss and accuracy. Compare these metrics against the baseline model without pruning. Experiment with different pruning ratios and strategies to identify the optimal trade-off between model compactness and performance, ensuring the model maintains sufficient accuracy for practical use.",
+        "Interestingness": 8,
+        "Feasibility": 7,
+        "Novelty": 7,
+        "novel": false
+    },
+    {
+        "Name": "multi_task_learning",
+        "Title": "Multi-Task Learning in Character-Level Language Models",
+        "Experiment": "Modify the data loader to generate labels for auxiliary tasks such as word boundary prediction. Adjust the GPT model to include additional output layers for these tasks. Update the training loop to compute auxiliary losses and integrate them with the main loss. Carefully select auxiliary tasks that are directly related to the main task and measure their performance. Experiment with different weightings for the auxiliary losses to evaluate their impact on the main task performance. Track metrics such as training loss, validation loss, and accuracy to compare the multi-task model against the baseline.",
+        "Interestingness": 9,
+        "Feasibility": 7,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "elastic_computation",
+        "Title": "Elastic Computation: Dynamic Layer Utilization in Language Models",
+        "Experiment": "Implement a mechanism in the model to dynamically adjust the number of active layers based on input complexity. Modify the forward method to include a decision-making module that evaluates input complexity and adjusts the number of transformer blocks used. Compare the efficiency (e.g., computation time, energy consumption) and performance (e.g., accuracy, loss) against a static model configuration.",
+        "Interestingness": 9,
+        "Feasibility": 6,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "data_noise_robustness",
+        "Title": "Enhancing Model Robustness Against Data Corruption: A Noise Injection Approach",
+        "Experiment": "Modify the data loader to introduce controlled noise to the input data during training. Implement a configuration parameter to control the noise level and type (e.g., Gaussian, salt-and-pepper). Conduct experiments to find the optimal noise level by evaluating the model's performance on both noisy and clean validation sets. Track metrics such as validation loss and accuracy to compare the noisily trained model against a baseline trained on clean data, ensuring that robustness does not compromise performance on clean data.",
+        "Interestingness": 8,
+        "Feasibility": 7,
+        "Novelty": 6,
+        "novel": true
+    },
+    {
+        "Name": "character_data_augmentation",
+        "Title": "Character-Level Data Augmentation for Robust Language Model Training",
+        "Experiment": "Modify the data loader to implement character-level data augmentation strategies, such as random deletion, swapping, or insertion of characters. Introduce configuration parameters to control the augmentation probability and type. Evaluate the impact on model generalization by comparing the validation loss and accuracy against a baseline model trained without augmentation. Additionally, assess robustness by introducing noise to the validation set and comparing performance.",
+        "Interestingness": 8,
+        "Feasibility": 8,
+        "Novelty": 7,
+        "novel": true
+    },
+    {
+        "Name": "adaptive_hyperparameters",
+        "Title": "Adaptive Hyperparameter Tuning for Enhanced Learning in Character-Level Models",
+        "Experiment": "Modify the training loop to dynamically adjust hyperparameters like learning rate and dropout based on performance metrics during training. Implement a feedback mechanism using simple heuristics or automated methods (e.g., Bayesian optimization) to tune these hyperparameters in response to changes in training or validation loss. Compare model performance and adaptability with a baseline using static hyperparameters, focusing on metrics like convergence speed and final accuracy.",
+        "Interestingness": 8,
+        "Feasibility": 7,
+        "Novelty": 7,
+        "novel": true
+    },
+    {
+        "Name": "attention_head_specialization",
+        "Title": "Attention Head Specialization: Encouraging Diverse Information Processing in Transformer Models",
+        "Experiment": "Modify the CausalSelfAttention class to include a regularization term that penalizes similar attention patterns across heads using cosine similarity. Implement visualization tools to analyze attention patterns of each head. Evaluate model performance, including accuracy and inference speed, with and without head specialization. Compare attention pattern diversity and task-specific improvements.",
+        "Interestingness": 9,
+        "Feasibility": 7,
+        "Novelty": 8,
+        "novel": false
+    }
+]
