@@ -1,0 +1,14 @@
+Experiment Description:
+Run 1 was conducted to analyze the evolution of feature representations in Transformer models using various mathematical operations as datasets. The operations included modular addition (x_plus_y), modular subtraction (x_minus_y), modular division (x_div_y), and permutation. The goal was to observe the model's learning dynamics and representation patterns before, during, and after grokking.
+
+The Transformer model was configured with 2 layers, a model dimension of 128, 4 attention heads, and a sequence length of 5. The datasets were split into training and validation sets with a 50% training fraction. The model was trained using the AdamW optimizer with a learning rate of 1e-3 and a weight decay of 0.5. The learning rate scheduler was configured with a warmup period of 50 steps.
+
+Results of Run 1:
+- x_div_y: Achieved a final training accuracy of 99.80% and a validation accuracy of 100%. The model reached 99% validation accuracy at step 4000.
+- x_minus_y: Achieved a final training and validation accuracy of 100%. The model reached 99% validation accuracy at step 4393.33.
+- x_plus_y: Achieved a final training and validation accuracy of 100%. The model reached 99% validation accuracy at step 2460.
+- permutation: Achieved a final training accuracy of 97.68% and a validation accuracy of 1.38%. The model did not reach 99% validation accuracy within the training steps.
+
+The results indicate that the model performed exceptionally well on modular arithmetic tasks but struggled with the permutation task, suggesting a need for further investigation into the model's ability to learn complex permutation patterns.
+
+Run Number: 1

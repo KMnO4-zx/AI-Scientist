@@ -105,3 +105,19 @@ In <JSON>, respond in JSON format with ONLY the following field:
 
 A query will work best if you are able to recall the exact name of the paper you are looking for, or the authors.
 This JSON will be automatically parsed, so ensure the format is precise.'''
+
+coder_prompt = """Your goal is to implement the following idea: {title}.
+The proposed experiment is as follows: {idea}.
+You are given a total of up to {max_runs} runs to complete the necessary experiments. You do not need to use all {max_runs}.
+
+First, plan the list of experiments you would like to run. For example, if you are sweeping over a specific hyperparameter, plan each value you would like to test for each run.
+
+Note that we already provide the vanilla baseline results, so you do not need to re-run it.
+
+For reference, the baseline results are as follows:
+
+{baseline_results}
+
+After you complete each change, we will run the command `python experiment.py --out_dir=run_i' where i is the run number and evaluate the results.
+YOUR PROPOSED CHANGE MUST USE THIS COMMAND FORMAT, DO NOT ADD ADDITIONAL COMMAND LINE ARGS.
+You can then implement the next thing on your list."""

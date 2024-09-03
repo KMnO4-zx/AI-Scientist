@@ -1,0 +1,191 @@
+[
+    {
+        "Name": "batch_size_grokking",
+        "Title": "Batch Size Grokking: Assessing the impact of the training batchsize on the grokking phenomenon",
+        "Experiment": "Modify the experiments to dynamically adjust the batch size during training, starting with a small batch size and gradually increasing it. This could potentially lead to faster generalization on the validation set.",
+        "Interestingness": 6,
+        "Feasibility": 4,
+        "Novelty": 4,
+        "novel": true
+    },
+    {
+        "Name": "attention_patterns_grokking",
+        "Title": "Attention Patterns During Grokking: Analyzing the Evolution of Attention in Transformer Models",
+        "Experiment": "Implement hooks in the self-attention layers of the `DecoderBlock` class to log attention scores at regular intervals during training (e.g., every 1000 steps). Use these logs to visualize and analyze changes in attention distributions over time. Apply clustering techniques or statistical methods to compare attention patterns before, during, and after grokking. This analysis should aim to identify any shifts in focus that correlate with the model's transition to perfect generalization.",
+        "Interestingness": 8,
+        "Feasibility": 7,
+        "Novelty": 7,
+        "novel": true
+    },
+    {
+        "Name": "optimization_strategy_grokking",
+        "Title": "Optimization Strategy and Grokking: Exploring the Role of Optimizers and Learning Rates",
+        "Experiment": "Implement and compare the effects of different optimizers (e.g., SGD, RMSprop, Adam) and learning rate schedules (e.g., step decay, cosine annealing) on the grokking phenomenon. Modify the run function to include these variations and log the time it takes for models to achieve perfect generalization. Analyze how different strategies affect the convergence speed and stability of grokking across datasets.",
+        "Interestingness": 7,
+        "Feasibility": 7,
+        "Novelty": 6,
+        "novel": true
+    },
+    {
+        "Name": "representation_dynamics_grokking",
+        "Title": "Representation Dynamics and Grokking: Analyzing the Evolution of Feature Representations in Transformer Models",
+        "Experiment": "Implement hooks in the Transformer model to extract and log hidden activations from the first and last layers at regular intervals, such as every 1000 training steps. Use dimensionality reduction techniques like PCA or t-SNE to visualize these activations, focusing on changes in clustering and separability across different classes. This analysis should be conducted before, during, and after grokking, aiming to identify representation patterns associated with the transition to perfect generalization. Visualizations will be used for both qualitative insights and quantitative measures like cluster compactness.",
+        "Interestingness": 9,
+        "Feasibility": 7,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "architecture_complexity_grokking",
+        "Title": "Architecture Complexity and Grokking: Exploring the Role of Model Depth and Width",
+        "Experiment": "Implement experiments to vary the number of layers and attention heads in the Transformer model. Modify the initialization parameters in the Transformer class to allow for easy adjustment of these architectural features. Run systematic experiments with different combinations of depth and width, measuring the time it takes for models to achieve perfect generalization and analyzing the relationship between architectural complexity and grokking. Use the final training and validation metrics to assess how these changes affect performance and generalization.",
+        "Interestingness": 8,
+        "Feasibility": 7,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "noise_impact_grokking",
+        "Title": "Noise Impact on Grokking: Assessing the Role of Noise in Neural Network Generalization",
+        "Experiment": "Incorporate noise injection into the training process by modifying the train function. Implement options to add Gaussian noise to input data or hidden layers, with adjustable noise levels. Introduce noise at specific intervals during training to observe its impact at different training stages. Conduct experiments with varying noise levels to measure their effect on the grokking timeline and final generalization performance. Use metrics such as the number of training steps to achieve 99% validation accuracy and final validation loss to assess the impact.",
+        "Interestingness": 8,
+        "Feasibility": 7,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "weight_sparsity_grokking",
+        "Title": "Weight Sparsity and Grokking: Exploring the Impact of Pruning on Generalization",
+        "Experiment": "Implement a pruning mechanism within the training loop to periodically remove a fraction of the least significant weights based on magnitude. Modify the train function to include pruning steps after certain training intervals. Analyze the number of training steps required to reach 99% validation accuracy and final validation performance across different pruning strategies. This will help assess how pruning impacts the grokking timeline and generalization ability.",
+        "Interestingness": 9,
+        "Feasibility": 8,
+        "Novelty": 8,
+        "novel": false
+    },
+    {
+        "Name": "data_augmentation_grokking",
+        "Title": "Data Augmentation and Grokking: Exploring the Impact of Input Variability on Generalization",
+        "Experiment": "Implement data augmentation techniques specific to each dataset type: for ModSum and ModSubtract, apply operand swapping (e.g., a+b = b+a); for ModDivision, introduce multiplicative inverses; for Permutation, use input permutation. Modify the data loading pipeline in the `GroupDataset` class to include these augmentations during training. Ensure that the validation data remains unchanged for clear comparison. Conduct experiments to measure the effect of data augmentation on the number of training steps required to achieve 99% validation accuracy and on the final validation loss, comparing these metrics with baseline results without augmentation.",
+        "Interestingness": 8,
+        "Feasibility": 8,
+        "Novelty": 7,
+        "novel": true
+    },
+    {
+        "Name": "curriculum_learning_grokking",
+        "Title": "Curriculum Learning and Grokking: The Impact of Progressive Training Difficulty",
+        "Experiment": "Modify the data loading pipeline to implement a curriculum learning strategy. Create a mechanism to rank the difficulty of training examples, starting with simpler ones and gradually progressing to more complex ones. This can involve starting with smaller numbers for mathematical operations and slowly increasing their range as training progresses. Implement this progression in the `GroupDataset` class, and adjust the training loop to handle the dynamic data selection. Measure the time taken to achieve 99% validation accuracy and compare it to baseline results to determine the impact of curriculum learning on grokking.",
+        "Interestingness": 9,
+        "Feasibility": 7,
+        "Novelty": 9,
+        "novel": true
+    },
+    {
+        "Name": "representation_phase_grokking",
+        "Title": "Representation Phase Transition and Grokking: Analyzing Hidden State Dynamics",
+        "Experiment": "Modify the Transformer model to include hooks that capture activations from the beginning, middle, and end layers at predefined training intervals (e.g., every 1000 steps). Use PCA or t-SNE for dimensionality reduction of captured activations, and visualize them to observe structural changes over time. Implement scripts to automate the logging and visualization process, focusing on identifying distinctive patterns or transformations in the hidden states as the model transitions towards perfect generalization.",
+        "Interestingness": 9,
+        "Feasibility": 7,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "initialization_grokking",
+        "Title": "Initialization and Grokking: Exploring the Influence of Initial Weights on Learning Dynamics",
+        "Experiment": "Modify the Transformer model initialization in the __init__ method to allow for different initialization strategies such as Xavier, He, and random Gaussian with varying variances. Conduct experiments to observe how these different initializations affect the number of steps required to achieve perfect generalization and the learning trajectory. Use metrics like training speed, final validation accuracy, and loss curves to assess the impact. Compare results against a baseline with default initialization.",
+        "Interestingness": 8,
+        "Feasibility": 8,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "interpretability_grokking",
+        "Title": "Interpretability and Grokking: Analyzing Attention Weight Dynamics During Generalization",
+        "Experiment": "Implement functionality to extract and log attention weights from the Transformer model at regular intervals, such as every 1000 steps. Modify the training loop to compute these weights and analyze how their distribution changes over time, particularly during the transition from overfitting to generalization. Use visualizations to illustrate shifts in attention focus and compare patterns across different datasets, aiming to identify common attention features that signify grokking.",
+        "Interestingness": 9,
+        "Feasibility": 8,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "layer_interaction_grokking",
+        "Title": "Layer Interaction and Grokking: Investigating Inter-Layer Communication in Neural Networks",
+        "Experiment": "Implement hooks to log layer outputs at regular intervals and analyze correlations between these layer outputs during training. Focus on determining how different layers influence the learning process and contribute to grokking. Measure changes in these correlations as the model transitions from overfitting to generalization. Evaluate how this inter-layer communication correlates with performance metrics such as validation accuracy and loss.",
+        "Interestingness": 9,
+        "Feasibility": 8,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "negative_examples_grokking",
+        "Title": "Negative Examples and Grokking: Exploring the Role of Incorrect Data in Generalization",
+        "Experiment": "Modify the fetch_train_example method in the dataset classes to introduce a configurable fraction of negative examples, where the model is presented with incorrect outputs for given inputs. Implement a mechanism to control the ratio of negative to positive examples during training. Conduct experiments with varying ratios, measuring their impact on the number of training steps to achieve 99% validation accuracy and the final validation loss. Compare these metrics to baseline results to assess how negative examples influence grokking.",
+        "Interestingness": 8,
+        "Feasibility": 7,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "latent_space_traversal",
+        "Title": "Latent Space Traversal and Grokking: Exploring Parameter Perturbations and Generalization",
+        "Experiment": "Modify the train function to periodically apply small, controlled Gaussian noise to the model's parameters or interpolate between parameter states during training, ensuring perturbations are subtle. Implement visualization techniques to track changes in the latent space over time, and analyze their effect on the model's path towards perfect generalization by monitoring validation accuracy and loss. Compare with baseline runs to identify perturbation patterns that stabilize or accelerate grokking.",
+        "Interestingness": 9,
+        "Feasibility": 7,
+        "Novelty": 9,
+        "novel": true
+    },
+    {
+        "Name": "interpolation_dynamics_grokking",
+        "Title": "Interpolation Dynamics and Grokking: Analyzing Hidden Representation Evolution",
+        "Experiment": "Modify the Transformer model to include hooks that capture hidden activations at regular intervals, such as every 1000 steps. Implement a mechanism to compute cosine similarities between hidden layer activations for a diverse and representative set of input pairs, selected through clustering or stratified sampling. Log these metrics over time and analyze trends that emerge during the transition from overfitting to grokking. Quantify shifts in representation interpolation dynamics using statistical measures and visualize these trends to provide clear insights. Discuss potential implications for enhancing model training and generalization strategies.",
+        "Interestingness": 9,
+        "Feasibility": 7,
+        "Novelty": 9,
+        "novel": true
+    },
+    {
+        "Name": "sequence_length_grokking",
+        "Title": "Sequence Length and Grokking: Investigating the Impact of Input Length on Learning Dynamics",
+        "Experiment": "Modify the data encoding process to generate input sequences of varying lengths by altering the form_equation method in AbstractDataset. Adjust the Transformer model to accept variable-length sequences by modifying the position_embeddings and related components. Conduct experiments with different sequence lengths, measuring the number of training steps required to achieve 99% validation accuracy and final validation loss. Compare these metrics across sequence lengths to assess their influence on grokking.",
+        "Interestingness": 8,
+        "Feasibility": 8,
+        "Novelty": 8,
+        "novel": true
+    },
+    {
+        "Name": "data_complexity_grokking",
+        "Title": "Data Complexity and Grokking: Investigating the Role of Problem Intricacy in Learning Dynamics",
+        "Experiment": "Implement a function to measure problem size characteristics, such as the size of modulo and permutation length, for each dataset type. Modify the run function to log these complexity scores alongside training metrics. Conduct experiments across datasets and correlate problem size with grokking characteristics, such as training steps to achieve 99% validation accuracy and final validation loss. Analyze whether larger or more intricate problems correlate with delayed grokking. Use statistical measures to validate findings and provide insights on the relationship between problem size and model generalization.",
+        "Interestingness": 9,
+        "Feasibility": 8,
+        "Novelty": 9,
+        "novel": true
+    },
+    {
+        "Name": "symmetry_enhancement_grokking",
+        "Title": "Symmetry Enhancement and Grokking: Leveraging Invariances for Improved Generalization",
+        "Experiment": "Focus initially on the ModSumDataset and modify the loss function to include a symmetry enforcement term. This term will be computed by evaluating the model's output on both original and operand-swapped inputs, and penalizing dissimilar outputs. Update the train function to incorporate this new loss component, and monitor its impact on the grokking timeline by comparing the number of steps required to achieve 99% validation accuracy and final validation performance against baseline results without symmetry enhancement.",
+        "Interestingness": 9,
+        "Feasibility": 8,
+        "Novelty": 9,
+        "novel": true
+    },
+    {
+        "Name": "meta_learning_grokking",
+        "Title": "Meta-Learning and Grokking: Leveraging Learning-to-Learn for Improved Generalization",
+        "Experiment": "Implement a meta-learning loop by modifying the run function. Divide training into several phases, each using a different permutation of the dataset. Between phases, save model parameters and reinitialize the model to continue training with these parameters. Log metrics on the steps required to reach 99% validation accuracy for each phase, and compare improvements across phases to assess meta-learning impact.",
+        "Interestingness": 9,
+        "Feasibility": 7,
+        "Novelty": 9,
+        "novel": true
+    },
+    {
+        "Name": "invariant_transformations_grokking",
+        "Title": "Invariant Transformations and Grokking: Exploring Semantically Stable Data Augmentation",
+        "Experiment": "Implement a transformation generator that creates rule-based transformations specific to each dataset type, such as operand swapping or scaling for arithmetic operations that maintain the result modulo p. Modify the data pipeline to apply these transformations during training, ensuring the validation set remains unchanged for consistency in evaluation. Run experiments to measure the impact on the number of training steps required to achieve 99% validation accuracy and final validation loss, comparing these results to baseline runs without transformations.",
+        "Interestingness": 9,
+        "Feasibility": 7,
+        "Novelty": 8,
+        "novel": true
+    }
+]

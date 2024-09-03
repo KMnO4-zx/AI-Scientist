@@ -1,0 +1,269 @@
+
+# aider chat started at 2024-09-03 19:51:25
+
+> Creating empty file template_data/nanoGPT_lite/notes.txt  
+
+# aider chat started at 2024-09-03 19:52:01
+
+> Creating empty file template_data/nanoGPT_lite/plot.py  
+
+#### Your goal is to implement the following idea: Adaptive Block Size: Dynamic Context Window Adjustment for Efficient Training.  
+#### The proposed experiment is as follows: Modify the model to dynamically adjust its block size during training, starting with a smaller block size and gradually increasing it. This could potentially lead to faster initial training and better long-range dependency learning..  
+#### You are given a total of up to 5 runs to complete the necessary experiments. You do not need to use all 5.  
+####   
+#### First, plan the list of experiments you would like to run. For example, if you are sweeping over a specific hyperparameter, plan each value you would like to test for each run.  
+####   
+#### Note that we already provide the vanilla baseline results, so you do not need to re-run it.  
+####   
+#### For reference, the baseline results are as follows:  
+####   
+#### None  
+####   
+#### After you complete each change, we will run the command `python experiment.py --out_dir=run_i' where i is the run number and evaluate the results.  
+#### YOUR PROPOSED CHANGE MUST USE THIS COMMAND FORMAT, DO NOT ADD ADDITIONAL COMMAND LINE ARGS.  
+#### You can then implement the next thing on your list.  
+> Unexpected error: litellm.AuthenticationError: AuthenticationError: OpenAIException - Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-OFGWp***************************************Da34. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}  
+> Traceback (most recent call last):  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/llms/openai.py", line 1033, in completion  
+> raise e  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/llms/openai.py", line 951, in completion  
+> self.make_sync_openai_chat_completion_request(  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/llms/openai.py", line 816, in make_sync_openai_chat_completion_request  
+> raise e  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/llms/openai.py", line 811, in make_sync_openai_chat_completion_request  
+> response = openai_client.chat.completions.create(  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/openai/_utils/_utils.py", line 274, in wrapper  
+> return func(*args, **kwargs)  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/openai/resources/chat/completions.py", line 668, in create  
+> return self._post(  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/openai/_base_client.py", line 1260, in post  
+> return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/openai/_base_client.py", line 937, in request  
+> return self._request(  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/openai/_base_client.py", line 1041, in _request  
+> raise self._make_status_error_from_response(err.response) from None  
+> openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-OFGWp***************************************Da34. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}  
+>  
+> During handling of the above exception, another exception occurred:  
+>  
+> Traceback (most recent call last):  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/main.py", line 1345, in completion  
+> raise e  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/main.py", line 1318, in completion  
+> response = openai_chat_completions.completion(  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/llms/openai.py", line 1039, in completion  
+> raise OpenAIError(status_code=e.status_code, message=str(e))  
+> litellm.llms.openai.OpenAIError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-OFGWp***************************************Da34. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}  
+>  
+> During handling of the above exception, another exception occurred:  
+>  
+> Traceback (most recent call last):  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/aider/coders/base_coder.py", line 1105, in send_message  
+> yield from self.send(messages, functions=self.functions)  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/aider/coders/base_coder.py", line 1377, in send  
+> hash_object, completion = send_completion(  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/aider/sendchat.py", line 86, in send_completion  
+> res = litellm.completion(**kwargs)  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/utils.py", line 1078, in wrapper  
+> raise e  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/utils.py", line 966, in wrapper  
+> result = original_function(*args, **kwargs)  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/main.py", line 2766, in completion  
+> raise exception_type(  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/utils.py", line 8438, in exception_type  
+> raise e  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/utils.py", line 6780, in exception_type  
+> raise AuthenticationError(  
+> litellm.exceptions.AuthenticationError: litellm.AuthenticationError: AuthenticationError: OpenAIException - Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-OFGWp***************************************Da34. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}  
+
+#### Run failed with the following error Traceback (most recent call last):  
+####   File "/mnt/g/WorkSpace/github_project/AI-Scientist/demo_code/template_data/nanoGPT_lite/experiment.py", line 695, in <module>  
+####     final_info, train_info, val_info = train(dataset, out_dir, seed_offset)  
+####   File "/mnt/g/WorkSpace/github_project/AI-Scientist/demo_code/template_data/nanoGPT_lite/experiment.py", line 511, in train  
+####     X, Y = get_batch("train")  # fetch the very first batch  
+####   File "/mnt/g/WorkSpace/github_project/AI-Scientist/demo_code/template_data/nanoGPT_lite/experiment.py", line 395, in get_batch  
+####     data = np.memmap(  
+####   File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/numpy/core/memmap.py", line 229, in __new__  
+####     f_ctx = open(os_fspath(filename), ('r' if mode == 'c' else mode)+'b')  
+#### FileNotFoundError: [Errno 2] No such file or directory: '../../../data/shakespeare_char/train.bin'  
+> Unexpected error: litellm.AuthenticationError: AuthenticationError: OpenAIException - Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-OFGWp***************************************Da34. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}  
+> Traceback (most recent call last):  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/llms/openai.py", line 1033, in completion  
+> raise e  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/llms/openai.py", line 951, in completion  
+> self.make_sync_openai_chat_completion_request(  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/llms/openai.py", line 816, in make_sync_openai_chat_completion_request  
+> raise e  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/llms/openai.py", line 811, in make_sync_openai_chat_completion_request  
+> response = openai_client.chat.completions.create(  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/openai/_utils/_utils.py", line 274, in wrapper  
+> return func(*args, **kwargs)  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/openai/resources/chat/completions.py", line 668, in create  
+> return self._post(  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/openai/_base_client.py", line 1260, in post  
+> return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/openai/_base_client.py", line 937, in request  
+> return self._request(  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/openai/_base_client.py", line 1041, in _request  
+> raise self._make_status_error_from_response(err.response) from None  
+> openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-OFGWp***************************************Da34. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}  
+>  
+> During handling of the above exception, another exception occurred:  
+>  
+> Traceback (most recent call last):  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/main.py", line 1345, in completion  
+> raise e  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/main.py", line 1318, in completion  
+> response = openai_chat_completions.completion(  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/llms/openai.py", line 1039, in completion  
+> raise OpenAIError(status_code=e.status_code, message=str(e))  
+> litellm.llms.openai.OpenAIError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-OFGWp***************************************Da34. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}  
+>  
+> During handling of the above exception, another exception occurred:  
+>  
+> Traceback (most recent call last):  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/aider/coders/base_coder.py", line 1105, in send_message  
+> yield from self.send(messages, functions=self.functions)  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/aider/coders/base_coder.py", line 1377, in send  
+> hash_object, completion = send_completion(  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/aider/sendchat.py", line 86, in send_completion  
+> res = litellm.completion(**kwargs)  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/utils.py", line 1078, in wrapper  
+> raise e  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/utils.py", line 966, in wrapper  
+> result = original_function(*args, **kwargs)  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/main.py", line 2766, in completion  
+> raise exception_type(  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/utils.py", line 8438, in exception_type  
+> raise e  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/utils.py", line 6780, in exception_type  
+> raise AuthenticationError(  
+> litellm.exceptions.AuthenticationError: litellm.AuthenticationError: AuthenticationError: OpenAIException - Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-OFGWp***************************************Da34. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}  
+
+#### Run failed with the following error Traceback (most recent call last):  
+####   File "/mnt/g/WorkSpace/github_project/AI-Scientist/demo_code/template_data/nanoGPT_lite/experiment.py", line 695, in <module>  
+####     final_info, train_info, val_info = train(dataset, out_dir, seed_offset)  
+####   File "/mnt/g/WorkSpace/github_project/AI-Scientist/demo_code/template_data/nanoGPT_lite/experiment.py", line 511, in train  
+####     X, Y = get_batch("train")  # fetch the very first batch  
+####   File "/mnt/g/WorkSpace/github_project/AI-Scientist/demo_code/template_data/nanoGPT_lite/experiment.py", line 395, in get_batch  
+####     data = np.memmap(  
+####   File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/numpy/core/memmap.py", line 229, in __new__  
+####     f_ctx = open(os_fspath(filename), ('r' if mode == 'c' else mode)+'b')  
+#### FileNotFoundError: [Errno 2] No such file or directory: '../../../data/shakespeare_char/train.bin'  
+> Unexpected error: litellm.AuthenticationError: AuthenticationError: OpenAIException - Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-OFGWp***************************************Da34. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}  
+> Traceback (most recent call last):  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/llms/openai.py", line 1033, in completion  
+> raise e  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/llms/openai.py", line 951, in completion  
+> self.make_sync_openai_chat_completion_request(  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/llms/openai.py", line 816, in make_sync_openai_chat_completion_request  
+> raise e  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/llms/openai.py", line 811, in make_sync_openai_chat_completion_request  
+> response = openai_client.chat.completions.create(  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/openai/_utils/_utils.py", line 274, in wrapper  
+> return func(*args, **kwargs)  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/openai/resources/chat/completions.py", line 668, in create  
+> return self._post(  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/openai/_base_client.py", line 1260, in post  
+> return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/openai/_base_client.py", line 937, in request  
+> return self._request(  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/openai/_base_client.py", line 1041, in _request  
+> raise self._make_status_error_from_response(err.response) from None  
+> openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-OFGWp***************************************Da34. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}  
+>  
+> During handling of the above exception, another exception occurred:  
+>  
+> Traceback (most recent call last):  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/main.py", line 1345, in completion  
+> raise e  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/main.py", line 1318, in completion  
+> response = openai_chat_completions.completion(  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/llms/openai.py", line 1039, in completion  
+> raise OpenAIError(status_code=e.status_code, message=str(e))  
+> litellm.llms.openai.OpenAIError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-OFGWp***************************************Da34. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}  
+>  
+> During handling of the above exception, another exception occurred:  
+>  
+> Traceback (most recent call last):  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/aider/coders/base_coder.py", line 1105, in send_message  
+> yield from self.send(messages, functions=self.functions)  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/aider/coders/base_coder.py", line 1377, in send  
+> hash_object, completion = send_completion(  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/aider/sendchat.py", line 86, in send_completion  
+> res = litellm.completion(**kwargs)  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/utils.py", line 1078, in wrapper  
+> raise e  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/utils.py", line 966, in wrapper  
+> result = original_function(*args, **kwargs)  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/main.py", line 2766, in completion  
+> raise exception_type(  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/utils.py", line 8438, in exception_type  
+> raise e  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/utils.py", line 6780, in exception_type  
+> raise AuthenticationError(  
+> litellm.exceptions.AuthenticationError: litellm.AuthenticationError: AuthenticationError: OpenAIException - Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-OFGWp***************************************Da34. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}  
+
+#### Run failed with the following error Traceback (most recent call last):  
+####   File "/mnt/g/WorkSpace/github_project/AI-Scientist/demo_code/template_data/nanoGPT_lite/experiment.py", line 695, in <module>  
+####     final_info, train_info, val_info = train(dataset, out_dir, seed_offset)  
+####   File "/mnt/g/WorkSpace/github_project/AI-Scientist/demo_code/template_data/nanoGPT_lite/experiment.py", line 511, in train  
+####     X, Y = get_batch("train")  # fetch the very first batch  
+####   File "/mnt/g/WorkSpace/github_project/AI-Scientist/demo_code/template_data/nanoGPT_lite/experiment.py", line 395, in get_batch  
+####     data = np.memmap(  
+####   File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/numpy/core/memmap.py", line 229, in __new__  
+####     f_ctx = open(os_fspath(filename), ('r' if mode == 'c' else mode)+'b')  
+#### FileNotFoundError: [Errno 2] No such file or directory: '../../../data/shakespeare_char/train.bin'  
+> Unexpected error: litellm.AuthenticationError: AuthenticationError: OpenAIException - Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-OFGWp***************************************Da34. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}  
+> Traceback (most recent call last):  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/llms/openai.py", line 1033, in completion  
+> raise e  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/llms/openai.py", line 951, in completion  
+> self.make_sync_openai_chat_completion_request(  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/llms/openai.py", line 816, in make_sync_openai_chat_completion_request  
+> raise e  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/llms/openai.py", line 811, in make_sync_openai_chat_completion_request  
+> response = openai_client.chat.completions.create(  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/openai/_utils/_utils.py", line 274, in wrapper  
+> return func(*args, **kwargs)  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/openai/resources/chat/completions.py", line 668, in create  
+> return self._post(  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/openai/_base_client.py", line 1260, in post  
+> return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/openai/_base_client.py", line 937, in request  
+> return self._request(  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/openai/_base_client.py", line 1041, in _request  
+> raise self._make_status_error_from_response(err.response) from None  
+> openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-OFGWp***************************************Da34. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}  
+>  
+> During handling of the above exception, another exception occurred:  
+>  
+> Traceback (most recent call last):  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/main.py", line 1345, in completion  
+> raise e  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/main.py", line 1318, in completion  
+> response = openai_chat_completions.completion(  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/llms/openai.py", line 1039, in completion  
+> raise OpenAIError(status_code=e.status_code, message=str(e))  
+> litellm.llms.openai.OpenAIError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-OFGWp***************************************Da34. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}  
+>  
+> During handling of the above exception, another exception occurred:  
+>  
+> Traceback (most recent call last):  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/aider/coders/base_coder.py", line 1105, in send_message  
+> yield from self.send(messages, functions=self.functions)  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/aider/coders/base_coder.py", line 1377, in send  
+> hash_object, completion = send_completion(  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/aider/sendchat.py", line 86, in send_completion  
+> res = litellm.completion(**kwargs)  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/utils.py", line 1078, in wrapper  
+> raise e  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/utils.py", line 966, in wrapper  
+> result = original_function(*args, **kwargs)  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/main.py", line 2766, in completion  
+> raise exception_type(  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/utils.py", line 8438, in exception_type  
+> raise e  
+> File "/home/kmno4/miniconda3/envs/nlp/lib/python3.10/site-packages/litellm/utils.py", line 6780, in exception_type  
+> raise AuthenticationError(  
+> litellm.exceptions.AuthenticationError: litellm.AuthenticationError: AuthenticationError: OpenAIException - Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-OFGWp***************************************Da34. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}  
