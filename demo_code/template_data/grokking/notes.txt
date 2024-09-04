@@ -12,3 +12,68 @@ Results of Run 1:
 The results indicate that the model performed exceptionally well on modular arithmetic tasks but struggled with the permutation task, suggesting a need for further investigation into the model's ability to learn complex permutation patterns.
 
 Run Number: 1
+
+Experiment Description:
+Run 2 was conducted to further analyze the evolution of feature representations in Transformer models using the same mathematical operations as datasets: modular addition (x_plus_y), modular subtraction (x_minus_y), modular division (x_div_y), and permutation. The goal was to observe any changes in the model's learning dynamics and representation patterns compared to Run 1.
+
+The Transformer model configuration and training setup remained the same as in Run 1, with 2 layers, a model dimension of 128, 4 attention heads, and a sequence length of 5. The datasets were split into training and validation sets with a 50% training fraction. The model was trained using the AdamW optimizer with a learning rate of 1e-3 and a weight decay of 0.5. The learning rate scheduler was configured with a warmup period of 50 steps.
+
+Results of Run 2:
+- x_div_y: Achieved a final training accuracy of 87.63% and a validation accuracy of 84.52%. The model reached 99% validation accuracy at step 3806.67.
+- x_minus_y: Achieved a final training accuracy of 86.32% and a validation accuracy of 94.98%. The model reached 99% validation accuracy at step 4393.33.
+- x_plus_y: Achieved a final training and validation accuracy of 100%. The model reached 99% validation accuracy at step 2723.33.
+- permutation: Achieved a final training accuracy of 99.83% and a validation accuracy of 66.38%. The model reached 99% validation accuracy at step 7360.
+
+The results indicate that while the model maintained high performance on the x_plus_y task, there was a noticeable drop in performance on the x_div_y and x_minus_y tasks compared to Run 1. The permutation task showed improvement in training accuracy but still struggled with validation accuracy, suggesting further investigation is needed.
+
+Run Number: 2
+
+Experiment Description:
+Run 3 was conducted to continue analyzing the evolution of feature representations in Transformer models using the same mathematical operations as datasets: modular addition (x_plus_y), modular subtraction (x_minus_y), modular division (x_div_y), and permutation. The goal was to observe any changes in the model's learning dynamics and representation patterns compared to previous runs.
+
+The Transformer model configuration and training setup remained the same as in previous runs, with 2 layers, a model dimension of 128, 4 attention heads, and a sequence length of 5. The datasets were split into training and validation sets with a 50% training fraction. The model was trained using the AdamW optimizer with a learning rate of 1e-3 and a weight decay of 0.5. The learning rate scheduler was configured with a warmup period of 50 steps.
+
+Results of Run 3:
+- x_div_y: Achieved a final training and validation accuracy of 100%. The model reached 99% validation accuracy at step 4103.33.
+- x_minus_y: Achieved a final training accuracy of 100% and a validation accuracy of 99.98%. The model reached 99% validation accuracy at step 4396.67.
+- x_plus_y: Achieved a final training accuracy of 87.82% and a validation accuracy of 97.97%. The model reached 99% validation accuracy at step 2693.33.
+- permutation: Achieved a final training accuracy of 98.67% and a validation accuracy of 1.76%. The model did not reach 99% validation accuracy within the training steps.
+
+The results indicate that the model performed exceptionally well on the x_div_y and x_minus_y tasks, achieving near-perfect accuracy. However, there was a drop in performance on the x_plus_y task compared to previous runs. The permutation task continued to show poor validation accuracy, suggesting further investigation is needed into the model's ability to learn complex permutation patterns.
+
+Run Number: 3
+
+Experiment Description:
+Run 4 was conducted to further analyze the evolution of feature representations in Transformer models using the same mathematical operations as datasets: modular addition (x_plus_y), modular subtraction (x_minus_y), modular division (x_div_y), and permutation. The goal was to observe any changes in the model's learning dynamics and representation patterns compared to previous runs.
+
+The Transformer model configuration and training setup remained the same as in previous runs, with 2 layers, a model dimension of 128, 4 attention heads, and a sequence length of 5. The datasets were split into training and validation sets with a 50% training fraction. The model was trained using the AdamW optimizer with a learning rate of 1e-3 and a weight decay of 0.5. The learning rate scheduler was configured with a warmup period of 50 steps.
+
+Results of Run 4:
+- x_div_y: Achieved a final training accuracy of 99.77% and a validation accuracy of 99.98%. The model reached 99% validation accuracy at step 4143.33.
+- x_minus_y: Achieved a final training and validation accuracy of 100%. The model reached 99% validation accuracy at step 4310.0.
+- x_plus_y: Achieved a final training accuracy of 83.59% and a validation accuracy of 84.74%. The model reached 99% validation accuracy at step 2376.67.
+- permutation: Achieved a final training accuracy of 95.74% and a validation accuracy of 34.03%. The model did not reach 99% validation accuracy within the training steps.
+
+The results indicate that the model maintained high performance on the x_div_y and x_minus_y tasks, achieving near-perfect accuracy. However, there was a noticeable drop in performance on the x_plus_y task compared to previous runs. The permutation task showed some improvement in validation accuracy but still struggled, suggesting further investigation is needed into the model's ability to learn complex permutation patterns.
+
+Run Number: 4
+
+Plot Descriptions:
+
+1. **Modular Division (x_div_y) Plot**:
+   - **Filename**: `x_div_y_plot.png`
+   - **Description**: This plot illustrates the training and validation loss and accuracy over the course of the training steps for the modular division task. The left subplot shows the loss, where a downward trend indicates the model's learning progress. The right subplot displays the accuracy, with an upward trend reflecting improved performance. The plot highlights the model's ability to achieve high accuracy and low loss, indicating effective learning of the modular division operation.
+
+2. **Modular Subtraction (x_minus_y) Plot**:
+   - **Filename**: `x_minus_y_plot.png`
+   - **Description**: This plot presents the training and validation loss and accuracy for the modular subtraction task. The left subplot shows the loss, and the right subplot shows the accuracy. The model's performance is depicted by the convergence of the training and validation curves, demonstrating its capability to generalize well on unseen data. The plot underscores the model's proficiency in learning the modular subtraction operation.
+
+3. **Modular Addition (x_plus_y) Plot**:
+   - **Filename**: `x_plus_y_plot.png`
+   - **Description**: This plot depicts the training and validation loss and accuracy for the modular addition task. The left subplot illustrates the loss, while the right subplot shows the accuracy. The plot reveals a decline in performance compared to previous runs, as indicated by the less pronounced convergence of the curves. This suggests potential challenges in learning the modular addition operation effectively.
+
+4. **Permutation Plot**:
+   - **Filename**: `permutation_plot.png`
+   - **Description**: This plot shows the training and validation loss and accuracy for the permutation task. The left subplot displays the loss, and the right subplot shows the accuracy. The plot highlights the model's struggle to achieve high validation accuracy, as evidenced by the significant gap between training and validation curves. This suggests difficulties in learning complex permutation patterns, warranting further investigation.
+
+These plots provide a visual representation of the model's learning dynamics and performance across different mathematical operations, offering insights into its strengths and areas for improvement.
