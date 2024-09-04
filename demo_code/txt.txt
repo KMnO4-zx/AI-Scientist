@@ -1,0 +1,40 @@
+{'Summary': 'The paper explores the potential role of filler tokens in '
+            'transformer language models, suggesting they can enhance '
+            'computational capabilities by serving as placeholders for '
+            'intermediate computations. Through theoretical analysis and '
+            'synthetic tasks, the authors show how filler tokens can extend '
+            'the expressivity of transformers, although practical applications '
+            'remain unclear.',
+ 'Strengths': ['Introduces a novel perspective on the capabilities of '
+               'transformers with filler tokens.',
+               'Provides a theoretical framework for understanding how filler '
+               'tokens can impact model expressivity.',
+               'Approaches an underexplored area in transformer research.'],
+ 'Weaknesses': ['Heavy reliance on synthetic datasets, limiting '
+                'generalizability to real-world tasks.',
+                'Lack of empirical validation in practical NLP applications.',
+                'Dense technical content and unclear sections hinder '
+                'accessibility.',
+                'Limited practical impact and insufficient exploration of '
+                'real-world implications.'],
+ 'Originality': 3,
+ 'Quality': 2,
+ 'Clarity': 2,
+ 'Significance': 2,
+ 'Questions': ['How can filler tokens be realistically applied in practical '
+               'NLP tasks?',
+               'What empirical evidence supports the theoretical claims about '
+               "filler tokens' computational roles?",
+               'What are the ethical implications of using filler tokens for '
+               'computations that may not be auditable?'],
+ 'Limitations': ['Synthetic nature of tasks limits applicability to real-world '
+                 'scenarios.',
+                 'Potential ethical concerns about unauditable computations '
+                 'are not addressed.'],
+ 'Ethical Concerns': False,
+ 'Soundness': 2,
+ 'Presentation': 2,
+ 'Contribution': 2,
+ 'Overall': 3,
+ 'Confidence': 4,
+ 'Decision': 'Reject'}
