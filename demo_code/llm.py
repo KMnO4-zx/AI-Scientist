@@ -42,6 +42,21 @@ def get_response_from_llm(
         )
         content = response.choices[0].message.content  # 从响应中提取生成的文本内容
         new_msg_history = new_msg_history + [{"role": "assistant", "content": content}]  # 更新历史记录
+    elif model == "deepseek-chat":
+        new_msg_history = msg_history + [{"role": "user", "content": msg}]
+        response = client.chat.completions.create(
+            model="deepseek-chat",
+            messages=[
+                {"role": "system", "content": system_message},
+                *new_msg_history,
+            ],
+            temperature=temperature,
+            max_tokens=3000,
+            n=1,
+            stop=None,
+        )
+        content = response.choices[0].message.content
+        new_msg_history = new_msg_history + [{"role": "assistant", "content": content}]
     else:
         raise ValueError(f"Model {model} not supported.")
 
@@ -96,7 +111,23 @@ def get_batch_responses_from_llm(
         new_msg_history = [
             new_msg_history + [{"role": "assistant", "content": c}] for c in content  # 将每个响应加入新的历史记录
         ]
-
+    elif model == "deepseek-chat":
+        new_msg_history = msg_history + [{"role": "user", "content": msg}]
+        response = client.chat.completions.create(
+            model="deepseek-chat",
+            messages=[
+                {"role": "system", "content": system_message},
+                *new_msg_history,
+            ],
+            temperature=temperature,
+            max_tokens=3000,
+            n=n_responses,
+            stop=None,
+        )
+        content = [r.message.content for r in response.choices]
+        new_msg_history = [
+            new_msg_history + [{"role": "assistant", "content": c}] for c in content
+        ]
     # 如果模型不在支持的列表中
     else:
         raise ValueError(f"Model {model} not supported.")  # 抛出异常，模型不支持
